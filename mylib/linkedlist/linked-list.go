@@ -1,32 +1,38 @@
 package linkedlist
 
-type Node struct {
-	Val  int
-	Next *Node
+type node struct {
+	val  int
+	next *node
 }
 
 type LinkedList struct {
-	Head *Node
-	Tail *Node
-	n    int
+	head *node
+	tail *node
 }
 
 func (l *LinkedList) Add(val int) {
-	if l.n == 0 {
-		node := Node{
-			Val:  val,
-			Next: nil,
+	if l.head == nil {
+		node := node{
+			val:  val,
+			next: nil,
 		}
-		l.Head = &node
-		l.Tail = l.Head
-		l.n++
+		l.head = &node
+		l.tail = l.head
 		return
 	}
 
-	node := Node{
-		Val:  val,
-		Next: nil,
+	node := node{
+		val:  val,
+		next: nil,
 	}
-	l.Tail.Next = &node
-	l.Tail = l.Tail.Next
+	l.tail.next = &node
+	l.tail = l.tail.next
+}
+
+func (l *LinkedList) Traverse() {
+	pointer := l.head
+	for pointer != nil {
+		print(pointer.val, " ")
+		pointer = pointer.next
+	}
 }
