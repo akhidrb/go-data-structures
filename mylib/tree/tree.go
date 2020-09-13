@@ -1,56 +1,56 @@
 package tree
 
-type Node struct {
-	Val   int
-	Right *Node
-	Left  *Node
+type node struct {
+	val   int
+	right *node
+	left  *node
 }
 
 type Tree struct {
-	Pointer *Node
+	pointer *node
 }
 
 func (t *Tree) Add(val int) {
-	if t.Pointer == nil {
-		t.Pointer = &Node{
-			Val: val,
+	if t.pointer == nil {
+		t.pointer = &node{
+			val: val,
 		}
 		return
 	}
-	t.Pointer.add(val)
+	t.pointer.add(val)
 }
 
-func (t *Node) add(val int) {
-	if val < t.Val {
-		if t.Left == nil {
-			t.Left = &Node{
-				Val: val,
+func (t *node) add(val int) {
+	if val < t.val {
+		if t.left == nil {
+			t.left = &node{
+				val: val,
 			}
 			return
 		}
-		t.Left.add(val)
+		t.left.add(val)
 	}
-	if val > t.Val {
-		if t.Right == nil {
-			t.Right = &Node{
-				Val: val,
+	if val > t.val {
+		if t.right == nil {
+			t.right = &node{
+				val: val,
 			}
 			return
 		}
-		t.Right.add(val)
+		t.right.add(val)
 	}
 }
 
 func (t *Tree) Traverse() {
-	t.Pointer.traverse()
+	t.pointer.traverse()
 }
 
-func (n *Node) traverse() {
-	if n.Left != nil {
-		n.Left.traverse()
+func (n *node) traverse() {
+	if n.left != nil {
+		n.left.traverse()
 	}
-	print(n.Val, " ")
-	if n.Right != nil {
-		n.Right.traverse()
+	print(n.val, " ")
+	if n.right != nil {
+		n.right.traverse()
 	}
 }
