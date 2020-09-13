@@ -1,16 +1,16 @@
-package queue
+package stack
 
 type node struct {
 	val  int
 	next *node
 }
 
-type Queue struct {
+type Stack struct {
 	head *node
 	tail *node
 }
 
-func (l *Queue) Push(val int) {
+func (l *Stack) Push(val int) {
 	if l.head == nil {
 		node := node{
 			val:  val,
@@ -29,7 +29,7 @@ func (l *Queue) Push(val int) {
 	l.tail = l.tail.next
 }
 
-func (l *Queue) Pop() int {
+func (l *Stack) Pop() int {
 	if l.head == nil {
 		return 0
 	}
@@ -38,12 +38,16 @@ func (l *Queue) Pop() int {
 		l.head = nil
 		return val
 	}
-	val := l.head.val
-	l.head = l.head.next
+	val := l.tail.val
+	pointer := l.head
+	for pointer.next != l.tail {
+		pointer = pointer.next
+	}
+	l.tail = pointer
 	return val
 }
 
-func (l *Queue) Traverse() {
+func (l *Stack) Traverse() {
 	pointer := l.head
 	for pointer != nil {
 		print(pointer.val, " ")
