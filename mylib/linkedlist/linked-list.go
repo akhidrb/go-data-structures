@@ -1,4 +1,4 @@
-package mylib
+package linkedlist
 
 type Node struct {
 	Val  int
