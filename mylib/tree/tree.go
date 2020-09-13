@@ -17,9 +17,7 @@ func (t *Tree) Add(val int) {
 		}
 		return
 	}
-	var node *Node
-	node = t.Pointer
-	node.add(val)
+	t.Pointer.add(val)
 }
 
 func (t *Node) add(val int) {
