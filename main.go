@@ -1,35 +1,29 @@
 package main
 
 import (
+	"playground/data-structures/mylib/binarysearch"
+	"playground/data-structures/mylib/linkedlist"
 	"playground/data-structures/mylib/queue"
+	"playground/data-structures/mylib/quicksort"
 	"playground/data-structures/mylib/tree"
 )
 
 func main() {
 
-	var myLink queue.Queue
-	myLink.Push(5)
-	myLink.Push(25)
-	myLink.Push(13)
-	myLink.Push(1)
-	println("Queue:")
-	myLink.Traverse()
-
+	linkedlist.RunLinkedList()
+	queue.RunQueue()
+	tree.RunTree()
+	binarysearch.RunSearch()
+	quicksort.RunQuickSort()
+	////////////////////////
+	// Run QuickSort with BinarySearch
+	arr := []int{5, 10, 20, 3, 7, 1, 12, 100, 55, 6, 8, 9}
+	quicksort.QuickSort(&arr)
+	println("Sorted Array:")
+	for _, val := range arr {
+		print(val, " ")
+	}
 	println()
-
-	println(myLink.Pop())
-	println(myLink.Pop())
-	println(myLink.Pop())
-	println(myLink.Pop())
-	println(myLink.Pop())
-
-	println()
-
-	var myTree tree.Tree
-	myTree.Add(5)
-	myTree.Add(25)
-	myTree.Add(13)
-	myTree.Add(1)
-	println("Binary Search Tree:")
-	myTree.Traverse()
+	pos := binarysearch.Find(arr, 6)
+	println("Position of 6 is ", pos)
 }
